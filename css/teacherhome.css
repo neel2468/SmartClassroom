@@ -58,39 +58,13 @@ nav{
 	  top:76px;
     background-color: black;
 }
-#mySidenav a {
-    position: absolute;
-    transition: 0.3s;
-    padding: 10px;
-    width: 150px;
-    right: -100px;
-    text-decoration: none;
-    font-size: 15px;
-    color: white;
-    border-radius: 5px;
-	  text-align:right;
+
+.upload{
+  position: absolute;
+  border:1px solid red;
+  height: 50px;
+  width:400px;
+  left:450px;
+  top:120px;
 }
 
-#mySidenav a:hover {
-    right: 0px;
-}
-
-#attendence {
-    top: 150px;
-    background-color: #AED6F1;
-}
-
-#blog {
-    top: 210px;
-    background-color: #2196F3;
-}
-
-#ScreenSharing {
-    top: 270px;
-    background-color: #f44336;
-}
-
-#contact {
-    top: 330px;
-    background-color: #555
-}

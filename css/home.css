@@ -226,7 +226,7 @@ margin: 0 10px;
 	height:100px;
 	width:160px;
 	background-color:#f9f9f9;
-	position:absolute;
+	position:relative;
 	margin-top: 22px;
 	left:861px;
 }
@@ -239,7 +239,7 @@ margin: 0 10px;
 	height:100px;
 	width:160px;
 	background-color:#f9f9f9;
-	position:absolute;
+	position:relative;
 	margin-top: 22px;
 	left:1364px;
 }

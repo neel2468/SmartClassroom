@@ -66,7 +66,11 @@ $(document).ready(function(){
         <input type="submit" name="clr" class="btn btn-primary"value="Clear"/>
         </form> 
 </div>
-</div> 
+</div>
+
+
+
+
 <div id="chatbtn">Chat
 <img src="img/chaticon.png" height="20px" width="20px" style='float: right'></div>
 <div id="chatbox">
@@ -79,9 +83,15 @@ $(document).ready(function(){
   </div>
   </div>
 </div>
-<div id="container" style="position:absolute;background-color:white"></div>
-<h4></h4>
-</body>
+<div id="container" style="position:absolute;z-index:1000"></div>
+
+
+
+
+
+
+
+
 <script>
   $(document).ready(function(){
     fetch_user();
@@ -118,7 +128,8 @@ $(document).ready(function(){
       var dynamic_div = $(document.createElement('div')).css({
                 border: '1px solid #ccc', position: 'absolute', left: element_pos, 
                 top: $('#container').height() + 20,
-                width: '442px', height: '420px',  margin: '0'         
+                width: '442px', height: '420px',  margin: '0' , background: 'white'
+                   
         
             });
             
@@ -221,13 +232,29 @@ $(document).on('click','.send_chat',function(){
        echo $output1;
    ?>
 </div>
-  <div id="mySidenav" class="sidenav">
-    <a href="#" id="attendence"><img src='img/attendence.png' height='20px' width='30px' style="left: 10px;position: absolute;">Attendance</a>
-    <a href="#" id="blog"><img src='img/otp.png' height='20px' width='30px' style="left: 10px;position: absolute;">OTP</a>
-    <a href="#" id="ScreenSharing">Screen Sharing</a>
-  </div>
+
+
+<div class='upload'>
+        <div class='heading'>
+        <form method='POST' action=" " enctype="multipart/form-data">
+            Select a file to upload:
+            <input type="file" name="userfile" />
+            <input type="submit" name="upload" value="upload" />
+            </form>
+        </div>
+</div>
+
+
+
+
+
+</body>
+  
 
 </html>
+
+
+
 <?php
 $connection=mysqli_connect('localhost','Neel','neel@123456','classroom');
 if(isset($_POST['logout']))

@@ -46,7 +46,8 @@ function fetch_user_chat_history($from_user_name, $to_user_name, $db)
    $user_name = '';
    if($row['from_user_name'] == $from_user_name)
    {
-   	 $user_name = '<b class="text-success">You</b>';
+      $user_name = '<b class="text-success">You</b>';
+     
    }
    $output .= '
   <li style="border-bottom:1px dotted #ccc">
