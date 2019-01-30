@@ -236,10 +236,13 @@ $(document).on('click','.send_chat',function(){
 
 <div class='upload'>
         <div class='heading'>
-        <form method='POST' action=" " enctype="multipart/form-data">
-            Select a file to upload:
-            <input type="file" name="userfile" />
-            <input type="submit" name="upload" value="upload" />
+              Material Upload
+        </div>
+        <div class="content">
+           <form method='POST' action=" " enctype="multipart/form-data">
+                Select a file to upload:
+                <input type="file" name="userfile" class="form-control" /><br>
+                <input type="submit" name="upload" value="upload" class="btn btn-danger" />
             </form>
         </div>
 </div>
@@ -284,5 +287,17 @@ if(isset($_POST['gen']))
     }
 
       }
+}
+
+if(isset($_POST['upload']))
+{
+	$file_name=$_FILES['userfile']['name'];
+	$file_size=$_FILES['userfile']['size'];
+	$file_tmp=$_FILES['userfile']['tmp_name'];
+	$upload_dir = "uploads/";
+	$uploadpath = $upload_dir.basename($file_name);
+	move_uploaded_file($file_tmp,$uploadpath);
+	echo "<script>alert('file uploaded successfully')</script>";
+	echo "File upload path: - " .$uploadpath."</br>";
 }
 ?>
