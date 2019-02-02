@@ -80,10 +80,11 @@ $(document).ready(function(){
 <div class ="MaterialDownload">
 <div class ="MaterialDownloadHeader">
 Material Download
-<div class="MaterialContent">
-</div>
-</div>
 
+</div>
+<div class="MaterialContent">
+
+</div>
 </div>
 
 

@@ -129,3 +129,10 @@ nav{
   padding: 60px;
   font-size: 20px;
 }
+.MaterialContent{
+    margin-top:5px;
+    margin-left: 5px;
+    height: 196px;
+    width: 388px;
+    border: 1px solid  #abb2b9 ;
+}
