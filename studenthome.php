@@ -1,3 +1,4 @@
+
 <?php
 include('checkstudentsession.php');
 $name=$_SESSION['username1'];
@@ -59,7 +60,8 @@ $(document).ready(function(){
         </div>
 
   </nav>
-  <h1>Welcome To classroom</h1>
+  <h1 style="text-align:center">Welcome To classroom</h1>
+
   <div id="chatbtn">Chat
 <img src="img/chaticon.png" height="20px" width="20px" style='float: right'></div>
 <div id="chatbox">
@@ -189,6 +191,34 @@ $(document).on('click','.send_chat',function(){
 
 
 </script>
+<div class="right">
+   <img src="img/profile.png" height="100px" width="100px" style="margin-left: 150px;margin-top: 30px">  
+   <?php
+       $connection=mysqli_connect('localhost','Neel','neel@123456','classroom');
+       $query="SELECT  * FROM student WHERE UserName='$name' ";
+       $output1 ="<div style='padding-top:40px'>";
+       $output1 .= "<div style='border:0.5px solid #1296DB;left:15px;position:absolute;width:370px;'></div>";
+       $output1 .= "<ul style='font-size: 23px;color:#1296DB;list-style-type:none;'>";
+       $output1 .= "<li style='margin:10px'>Name : ";
+       $res=mysqli_query($connection,$query);
+       while($row=mysqli_fetch_assoc($res))
+       {
+       $output1 .=  $row['UserName']."</li>";
+       $output1 .= "<li style='line-height:55px;margin-left:10px'>ID : ";
+       $output1 .= $row['StudentId']."</li>";
+       $output1 .= "<li style='line-height:55px;margin-left:10px'>Branch : ";
+       $output1 .= $row['Branch']."</li>";
+       $output1 .= "<li style='line-height:55px;margin-left:10px'>Email : ";
+       $output1 .= $row['EmailId']."</li>";
+       $output1 .= "<li style='line-height:55px;margin-left:10px'>College : ";
+       $output1 .= $row['College']."</li>";
+       }
+       $output1 .= "<div style='border:0.5px solid #FFD700;left:15px;position:absolute;width:370px;'></div>";
+       $output1 .= "</ul></div>";
+       echo $output1;
+   ?>
+</div>
+
 </html>  
     
 
