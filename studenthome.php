@@ -5,7 +5,7 @@ $name=$_SESSION['username1'];
 ?>
 <html>
 <head>
-  <link type="text/css" rel="stylesheet" href="css/teacherhome.css" />
+  <link type="text/css" rel="stylesheet" href="css/studenthome.css" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -20,7 +20,7 @@ $name=$_SESSION['username1'];
   opacity: 0.8;
   position: fixed;
   bottom: 23px;
-  right: 28px;
+  left: 28px;
   width: 280px;
   z-index: 10px;
 
@@ -30,7 +30,7 @@ $name=$_SESSION['username1'];
   height:400px;
   overflow:auto;
   width:282px;
-  right:28px;
+  left:28px;
   bottom:24px;
   border:1px solid black;
   display: none;
@@ -60,7 +60,7 @@ $(document).ready(function(){
         </div>
 
   </nav>
-  <h1 style="text-align:center">Welcome To classroom</h1>
+  <h1 style="text-align:center;position: absolute;left:390px">Welcome To classroom</h1>
 
   <div id="chatbtn">Chat
 <img src="img/chaticon.png" height="20px" width="20px" style='float: right'></div>
@@ -75,7 +75,41 @@ $(document).ready(function(){
   </div>
 </div>
 <div id="container" style="position:absolute;background-color:white"></div>
+
+
+<div class ="MaterialDownload">
+<div class ="MaterialDownloadHeader">
+Material Download
+<div class="MaterialContent">
+</div>
+</div>
+
+</div>
+
+
+
+<div class ="AssignmentUpload">
+<div class ="AssignmentUploadHeader">
+Assignment Upload
+</div>
+<div class="content">
+           <form method='POST' action=" " enctype="multipart/form-data">
+                Select a file to upload:
+                <input type="file" name="userfile" class="form-control" /><br>
+                <input type="submit" name="upload" value="upload" class="btn btn-success" />
+            </form>
+        </div>
+</div>
+
+
 </body>
+
+
+
+
+
+
+
 <script>
   $(document).ready(function(){
     fetch_user();
@@ -205,7 +239,7 @@ $(document).on('click','.send_chat',function(){
        {
        $output1 .=  $row['UserName']."</li>";
        $output1 .= "<li style='line-height:55px;margin-left:10px'>ID : ";
-       $output1 .= $row['StudentId']."</li>";
+       $output1 .= $row['EnrollmentId']."</li>";
        $output1 .= "<li style='line-height:55px;margin-left:10px'>Branch : ";
        $output1 .= $row['Branch']."</li>";
        $output1 .= "<li style='line-height:55px;margin-left:10px'>Email : ";
