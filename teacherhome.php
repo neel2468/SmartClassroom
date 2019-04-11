@@ -1,6 +1,8 @@
 <?php 
 include('checkteachersession.php');
 $name=$_SESSION['username'];
+$sb=$_SESSION['subject'];
+$dv=$_SESSION['division'];
 ?>
 <html>
 <head>
@@ -9,6 +11,30 @@ $name=$_SESSION['username'];
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+  <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">    
+    <title>SCLASS | Teacher</title>
+
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+
+    <!-- Font awesome -->
+    <link href="css/font-awesome.css" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.css" rel="stylesheet">   
+    <!-- Slick slider -->
+    <link rel="stylesheet" type="text/css" href="css/slick.css">          
+    <!-- Fancybox slider -->
+    <link rel="stylesheet" href="css/jquery.fancybox.css" type="text/css" media="screen" /> 
+    <!-- Theme color -->
+    <link id="switcher" href="css/theme-color/default-theme.css" rel="stylesheet">          
+    <link href="css/style.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,400italic,300,300italic,500,700' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 
 <style type="text/css">
    #chatbtn {
@@ -33,7 +59,12 @@ $name=$_SESSION['username'];
   bottom:24px;
   border:1px solid black;
   display: none;
+  z-index: 2000;
   background-color: white;
+}
+
+body{
+  background-image:url('img/bg.jpg')
 }
 
 </style>
@@ -51,28 +82,49 @@ $(document).ready(function(){
 </head>
 
 <body>
-   <nav> 
-        <a href="#" class="link1">Welcome <?php echo $_SESSION['username'] ?></a>.
-        <div style="float: right;">
-          <form method="POST" action="<?php $_PHP_SELF ?>">
-            <input type="submit" value="Log Out" class="btn" name="logout"/>
-          </form>
+<section id="mu-menu">
+    <nav class="navbar navbar-default" role="navigation">  
+      <div class="container">
+        <div class="navbar-header">
+          <!-- FOR MOBILE VIEW COLLAPSED BUTTON -->
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <!-- LOGO -->              
+          <!-- TEXT BASED LOGO -->
+          <a class="navbar-brand" href="index.html"><i class="fa fa-university"></i><span>SCLASS</span></a>
+          <!-- IMG BASED LOGO  -->
+          <!-- <a class="navbar-brand" href="index.html"><img src="assets/img/logo.png" alt="logo"></a> -->
         </div>
-  </nav>
- <div class="jumbotron" id="mydiv">
-     <div class="btn-group">
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul id="top-menu" class="nav navbar-nav navbar-right main-nav">
+          <li>
+          <form method="POST" action="<?php $_PHP_SELF ?>">
+            <input type="submit" name="logout" class="genBtn" value="Log Out"/>
+         </form>
+         <li>                                     
+         </ul>             
+        </div><!--/.nav-collapse -->        
+      </div>     
+    </nav>
+  </section>
+
+ <div id="mydiv">
         <form method="POST" action="<?php $_PHP_SELF ?>">
-        <input type="submit" name="gen" class="btn btn-primary"value="Generate OTP"/>
-        <input type="submit" name="clr" class="btn btn-primary"value="Clear"/>
+            <input type="submit" name="gen" class="genBtn" value="Generate OTP"/>
+            <input type="submit" name="clr" class="clearBtn" value="Clear"/>
         </form> 
-</div>
 </div>
 
 
 
 
 <div id="chatbtn">Chat
-<img src="img/chaticon.png" height="20px" width="20px" style='float: right'></div>
+<img src="img/chaticon.png" height="20px" width="20px" style='float: right'>
+</div>
 <div id="chatbox">
   <div style='background-color:#0080ff;height: 40px; width:280px; color: white;position: fixed;'>
     <h5 style="margin-left: 10px">Active Users
@@ -202,17 +254,16 @@ $(document).on('click','.send_chat',function(){
 
 
 
-</script>
+</script> 
 
 
-<div class="right">
-   <img src="img/profile.png" height="100px" width="100px" style="margin-left: 150px;margin-top: 30px">  
+<div class="right" style="background-image:url('img/profilebackground.jpg');background-repeat:no-repeat">
+<i class="material-icons" style='color:white;font-size:250px;position:relative;top:10px;left:50px'>person</i>
    <?php
        $connection=mysqli_connect('localhost','Neel','neel@123456','classroom');
        $query="SELECT  * FROM teacher WHERE UserName='$name' ";
        $output1 ="<div style='padding-top:40px'>";
-       $output1 .= "<div style='border:0.5px solid #1296DB;left:15px;position:absolute;width:370px;'></div>";
-       $output1 .= "<ul style='font-size: 23px;color:#1296DB;list-style-type:none;'>";
+       $output1 .= "<ul style='font-size: 23px;color:white;list-style-type:none;'>";
        $output1 .= "<li style='margin:10px'>Name : ";
        $res=mysqli_query($connection,$query);
        while($row=mysqli_fetch_assoc($res))
@@ -227,7 +278,6 @@ $(document).on('click','.send_chat',function(){
        $output1 .= "<li style='line-height:55px;margin-left:10px'>College : ";
        $output1 .= $row['College']."</li>";
        }
-       $output1 .= "<div style='border:0.5px solid #1296DB;left:15px;position:absolute;width:370px;'></div>";
        $output1 .= "</ul></div>";
        echo $output1;
    ?>
@@ -247,7 +297,88 @@ $(document).on('click','.send_chat',function(){
         </div>
 </div>
 
+<!--<div class='screenSharing'>
+        <div class='heading'>
+              Screen Sharing
+        </div>
+        <div class="content">
+           <form method='POST' action=" ">
+                <input type="text" name="screensharinglink" class="form-control screenlink" />
+                <input type="submit" name="upload" value="upload" class="btn btn-primary" />
+            </form>
+        </div>
+</div> -->
 
+<div id='AttendanceContainer'>
+    <div id='TableWrapper'>
+        <table>
+          <tr>
+                  <th>Enrollment No</th>
+                  <th>Student Name</th>
+                  <th>Time</th>
+                  <th>Date</th>
+
+          </tr>
+          <tr>
+              
+                    <?php
+                       $temp[0][0] = "";
+                       $tempCount = 0;
+                      if($_SESSION['is_type'] == 'teacher')
+                      {
+                        $output  = ' ';
+                        $subquery1="SELECT * FROM login_details WHERE is_type='student'";
+                        $subresult1=mysqli_query($db,$subquery1);
+                        while($subrow1=mysqli_fetch_assoc($subresult1))
+                        {
+                          $username = $subrow1['UserName'];
+                          $subquery2="SELECT EnrollmentId FROM student WHERE UserName ='$username'";
+                          $subresult2=mysqli_query($db,$subquery2);
+                          while($subrow2=mysqli_fetch_assoc($subresult2)){
+                          $output .= '
+                            <tr>
+                            <td>'.$subrow2['EnrollmentId'].'</td>
+                            <td>'.$subrow1['UserName'].'</td>
+                            <td>'.$subrow1['Login_Time'].'</td>
+                            <td>'.$subrow1['Login_Date'].'</td>
+                            
+                            </tr>
+                            ';
+                            $temp[$tempCount][0] = $subrow1['Login_Date'];
+                            $temp[$tempCount][1] = $subrow1['Login_Time'];
+                            $temp[$tempCount][2] = $subrow1['UserName'];
+                            $temp[$tempCount][3] = $subrow2['EnrollmentId'];
+                          }
+                          $tempCount += 1;
+                        }
+                    
+                    echo $output;
+                    
+                    $data1 = " ";$data2 = " ";$data3 =" ";$data4 =" ";
+                    if(isset($_POST['save'])) {
+                    //echo "<script>alert('".$tempCount."');</script>";
+                    for($i = 0; $i < $tempCount; $i++) {
+                      for($j = 0; $j <= 3; $j++) {
+                         $data1 = $temp[$i][0];
+                         $data2 = $temp[$i][1];
+                         $data3 = $temp[$i][2];
+                         $data4 = $temp[$i][3];
+                        }
+                        $query = "INSERT INTO  attendance(AttendanceDate, AttendanceTime, StudentName, StudentId, AttendanceIsDone,subjectName,division)
+                         VALUES('$data1','$data2','$data3','$data4','1','$sb','$dv')";
+                         $result = mysqli_query($db,$query);
+                         //echo $query45;
+
+                    }
+                  }
+                      }
+                     ?>
+        </table>
+    </div>
+    <form method='POST' action = ''>
+    <input type="submit" name="save" value="Save" class="btn btn-danger" style = 'position:absolute;bottom:5px;right:5px' />
+    </form>
+</div>
 
 
 
@@ -298,6 +429,8 @@ if(isset($_POST['upload']))
 	$uploadpath = $upload_dir.basename($file_name);
 	move_uploaded_file($file_tmp,$uploadpath);
 	echo "<script>alert('file uploaded successfully')</script>";
-	echo "File upload path: - " .$uploadpath."</br>";
+  echo "File upload path: - " .$uploadpath."</br>";
+  $query = "INSERT INTO materialdownload(UserName,FilePath) VALUES('$name', '$uploadpath')";
+  $result = mysqli_query($connection, $query);
 }
 ?>

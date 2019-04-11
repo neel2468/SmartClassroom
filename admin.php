@@ -1,38 +1,10 @@
-<html>
-    <head>
-    	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-	</head>
-	<body style="background-color: grey">
-		<div class="jumbotron" style="height:500px;width: 500px;left: 500px;top:120px;position: absolute;border:2px solid #CD5C5C;">
-			 <div style="background-color:#CD5C5C;height: 40px; width:498px; color: white;position: fixed;top:120px;color: white ">
-			 	<p style="padding: 6px">Admin Login</p>
-			 </div>
-			 <form method="POST" action="">
-			 	 <p style="margin-top: 120px;margin-left: 40px">UserName:
-			 	 <input type="text" name="username" style="margin-left: 40px" autocomplete="off" autosave="off"/></p>
-			 	 <p style="margin-top: 40px;margin-left: 40px">Password:
-			 	 <input type="password" name="password" style="margin-left: 48px" autocomplete="off" autosave="off"/></p>
-			 	 <input type="submit" name="login" value="Login" class="btn btn-danger" style="margin-left: 390px;margin-top: 20px" />
-			 </form>
-		</div>
-	</body>
-</html>
 <?php
-session_start();
 if(isset($_POST['login']))
 {
-	$_SESSION['name'] = $_GET['username'];
+	
 	if($_POST['username']== 'admin' && $_POST['password']== '1234')
 	{
-        $_SESSION['name'] = $_POST['username'];
-        if(isset($_SESSION['name']) && $_SESSION['name'] != '' )
-        {
 		 echo "<script>location.href='adminhome.php';</script>";
-	    }
-	    else
-	    {
-           echo "<script>location.href='admin.php';</script>";
-	    }
 	}
 	else 
 	{
@@ -41,3 +13,88 @@ if(isset($_POST['login']))
 	}
 }
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>SCLASS | Admin</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/admin.css">
+<!--===============================================================================================-->
+</head>
+<body>
+	
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<form class="login100-form validate-form" method="POST" action = " " >
+					<span class="login100-form-title p-b-26">
+						Admin
+					</span>
+					<span class="login100-form-title p-b-48">
+						<i class="zmdi zmdi-font"></i>
+					</span>
+
+					<div class="wrap-input100 validate-input">
+						<input class="input100" type="text" name="username" autocomplete="off" autosave="off" placeholder="Username" >
+						<span class="focus-input100"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input" autocomplete="off" autosave="off" >
+						<span class="btn-show-pass">
+							<i class="zmdi zmdi-eye"></i>
+						</span>
+						<input class="input100" type="password" name="password" placeholder="Password">
+						<span class="focus-input100"></span>
+					</div>
+						<div class="container-login100-form-btn">
+						<input type="submit" class="login100-form-btn" name="login" value="Login">
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+
+	
+	
+<!--===============================================================================================-->
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/daterangepicker/moment.min.js"></script>
+	<script src="vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+	<script src="js/main.js"></script>
+
+</body>
+</html>

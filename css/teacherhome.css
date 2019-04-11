@@ -3,19 +3,6 @@ body
   margin:0;
   overflow:hidden;
 }
-nav{
-  padding: 24px;
-  background-color:#1296DB;
-}
-.link1 {
-  font-weight: 15px;
-  transition: 0.4s;
-  color: #ffffff;
-  font-size: 20px;
-  text-decoration: none;
-  padding: 0 10px;
-  margin: 10 50px;
-}
 .btn{
   background-color: white;
   border: 2px solid #333333;
@@ -31,11 +18,13 @@ nav{
     position:fixed;
     top: 30%;
     left: 50%;
-    width:20em;
-    height:5em;
+    width: 300px;
+    height:100px;
     margin-top: -9em; /*set to a negative number 1/2 of your height*/
     margin-left: -15em;
-    padding:20px;}
+    padding:20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
   #mydiv1 {
       position:fixed;
       top: 40%;
@@ -54,18 +43,33 @@ nav{
     position: absolute;
     left: 0px;
     width: 400px;
-	  height: 800px;
-	  top:76px;
-    background-color: black;
+	  height: 820px;
+	  top:68px;
+    
 }
 
 .upload{
   position: absolute;
-  border:1px solid red;
   height: 260px;
   width:400px;
   left:550px;
-  top:320px;
+  top:280px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.screenSharing{
+  position: absolute;
+  height: 120px;
+  width:400px;
+  left:500px;
+  bottom: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.screenlink {
+  position: absolute;
+  top: 60px;
+  left: 5px;
 }
 
 .heading{
@@ -81,5 +85,96 @@ nav{
   padding: 60px;
   font-size: 20px;
 }
+
+
+#AttendanceContainer{
+
+    height:  500px;
+    width : 406px;
+    position: absolute;
+    top : 100px;
+    float : right;
+    right: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+
+table, td, th {  
+  border: 0.5px solid #ddd;
+  text-align: left;
+}
+
+table th {
+  font-size: 15px;
+}
+
+ table th,  table td {
+  padding: 5px 5.5px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+ table tr:hover 
+ {
+background-color:#f5f5f5;
+}
+table  tr
+ {
+ 	background-color:white;
+ }
+ th {
+  background-color: #4CAF50;
+  color: white;
+  scroll-behavior: disabled;
+}
+.table-wrapper-scroll-y
+{
+    max-height: 400px;
+    width:370px;
+    overflow-y: scroll;
+    margin-left:  30px;
+    border:2px solid #4CAF50;
+    position: absolute;
+}
+
+#TableWrapper{
+    position : absolute;
+    
+}
+
+.genBtn{
+   height: 30px;
+   width : 100px;
+   padding: 5px;
+   margin: 10px;
+   background-color: #0080ff;
+   border: none;
+   outline : none;
+   color:white;
+}
+
+.clearBtn{
+  height: 30px;
+  width : 100px;
+  padding: 5px;
+  margin: 10px;
+  background-color: chocolate;
+  border: none;
+  outline : none;
+  color:white;
+}
+
+.logoutBtn{
+  height: 30px;
+  width : 100px;
+  padding: 5px;
+  margin: 10px;
+  background-color: chocolate;
+  border: none;
+  outline : none;
+  color:white;
+}
+
 
 

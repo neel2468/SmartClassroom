@@ -1,0 +1,49 @@
+table, td, th {  
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+  
+   table th,  table td {
+    padding: 10px 55px; 
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+   table tr:hover 
+   {
+  background-color:#f5f5f5;
+  }
+  table  tr
+   {
+       background-color:white;
+   }
+   th {
+    background-color: #4CAF50;
+    color: white;
+    scroll-behavior: disabled;
+  }
+  .table-wrapper-scroll-y
+  {
+      max-height: 500px;
+      width:440px;
+      overflow-y: scroll;
+      border:2px solid #4CAF50;
+      position: absolute;
+  }
+  #frame
+  {
+    display: none;
+    position: absolute;
+    top : 100px;
+    border: none;
+    outline : none;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+
+  .div1{
+      position: absolute;
+      top : 100px;
+      left : 20px;
+      height:400px;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }

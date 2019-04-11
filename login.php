@@ -1,13 +1,17 @@
 <?php
 session_start();
 include('connection.php');
+date_default_timezone_set('Asia/Kolkata');
 if(isset($_POST['tregister']))
 {
     $name=stripslashes($_POST['nm']);
     $branch=stripslashes($_POST['bn']);
     $email=stripslashes($_POST['em']);
     $id=stripslashes($_POST['id']);
-    $college=stripslashes($_POST['cl']);
+	$college=stripslashes($_POST['cl']);
+	$subject1=stripslashes($_POST['sb1']);
+	$subject2=stripslashes($_POST['sb2']);
+	$subject3=stripslashes($_POST['sb3']);
     $password=md5($_POST['pwd']);
     $password=stripslashes($password);
     $name=mysqli_real_escape_string($db,$name);
@@ -15,9 +19,12 @@ if(isset($_POST['tregister']))
     $id=mysqli_real_escape_string($db,$id);
     $branch=mysqli_real_escape_string($db,$branch);
     $password=mysqli_real_escape_string($db,$password);
-    $college=mysqli_real_escape_string($db,$college);
-
-    $sql1="insert into teacher(UserName,Branch,EmailId,TeacherId,Password,College) values('$name','$branch','$email','$id','$password','$college') ";
+	$college=mysqli_real_escape_string($db,$college);
+	$subject1=mysqli_real_escape_string($db,$subject1);
+	$subject2=mysqli_real_escape_string($db,$subject2);
+	$subject3=mysqli_real_escape_string($db,$subject3);
+	
+    $sql1="insert into teacher(UserName,Branch,EmailId,TeacherId,Password,College,subject1,subject2,subject3) values('$name','$branch','$email','$id','$password','$college','$subject1','$subject2','$subject3') ";
     $result1=mysqli_query($db,$sql1);
     if($result1)
     {
@@ -59,16 +66,20 @@ if(isset($_POST['tlogin']))
     {
             $username=$_POST['nm3'];
 			$password=md5($_POST['pwd3']);
+			$subject  = $_POST['sb4'];
+			$division= $_POST['dv4'];
 
 			// To protect from MySQL injection
 			$username = stripslashes($username);
 			$password = stripslashes($password);
+			$subject  = stripslashes($subject);
+			$division = stripslashes($division);
 			$username = mysqli_real_escape_string($db, $username);
 			$password = mysqli_real_escape_string($db, $password);
 			// $password = md5($password);
 
 			//Check username and password from database
-			$sql="SELECT user_id,is_account_active FROM teacher WHERE UserName= '$username' AND Password='$password' AND is_account_active='1' ";
+			$sql="SELECT user_id,is_account_active, subject1, subject2, subject3 FROM teacher WHERE UserName= '$username' AND Password='$password' AND is_account_active='1' ";
 			// echo $sql;
 			$result=mysqli_query($db,$sql);
 
@@ -82,11 +93,20 @@ if(isset($_POST['tlogin']))
 				// Redirecting To Other Page
 				while($row=mysqli_fetch_assoc($result))
 				{
+					if($subject === $row['subject1'] || $row['subject2'] || $row['subject2'])
+					{
+						$_SESSION['subject'] = $subject;
+						$_SESSION['division'] = $division;
+
+					}
 					$_SESSION['user_id']=$row['user_id'];
 					$Tid=$row['user_id'];
 					$_SESSION['is_type']="teacher";
-					$subquery="INSERT INTO login_details(user_id,UserName,is_type) VALUES('$Tid','$username','teacher') ";
-                    $subresult=mysqli_query($db,$subquery);
+					$Time = date("h:i:sa");
+					$date = date("Y-m-d");
+					$subquery="INSERT INTO login_details(user_id,UserName,is_type,Login_Time,Login_Date)  
+					VALUES('$Tid','$username','teacher','$Time','$date')";
+					$subresult=mysqli_query($db,$subquery);
                     $_SESSION['login_details_id']=mysqli_insert_id($db);
 
 
@@ -95,6 +115,7 @@ if(isset($_POST['tlogin']))
 			}else
 			{
 				$error = "Incorrect username or password.";
+				echo "<script>alert('Please activate your account')</script>";
 			}
 
     }
@@ -136,7 +157,10 @@ if(isset($_POST['slogin']))
 					$_SESSION['user_id1']=$row['user_id'];
 					$Sid=$row['user_id'];
 					$_SESSION['is_type']="student";
-					$subquery="INSERT INTO login_details(user_id,UserName,is_type) VALUES('$Sid','$username','student') ";
+					$Time = date("h:i:sa");
+					$date = date("Y-m-d");
+					$subquery="INSERT INTO login_details(user_id,UserName,is_type,Login_Time,Login_Date)  
+					VALUES('$Tid','$username','student','$Time','$date')";
                     $subresult=mysqli_query($db,$subquery);
                     $_SESSION['login_details_id']=mysqli_insert_id($db);
 
@@ -148,6 +172,7 @@ if(isset($_POST['slogin']))
 			}else
 			{
 				$error = "Incorrect username or password.";
+				echo "<script>alert('Please activate your account')</script>";
 			}
 
     }
