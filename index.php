@@ -726,6 +726,12 @@ if ((isset($_SESSION['username1']) && $_SESSION['username1'] != '' ))
             <input class="input100" type="text" name="nm2" required autosave="off" autocomplete="off" placeholder="Username" style="color:#fff">
             <span class="focus-input100"></span>
     </div>
+
+    <div class="wrap-input100 validate-input" data-validate = "Enter Division">
+           
+           <input class="input100" type="text" name="dv2" required autosave="off" autocomplete="off" placeholder="Division" style="color:#fff">
+           <span class="focus-input100"></span>
+   </div>
  		<div class="wrap-input100 validate-input" data-validate="Enter password">
            
 						<input class="input100" type="password" required name="pwd2" placeholder="Password">

@@ -199,10 +199,14 @@ img {
   letter-spacing: 0.5px;
 }
 #mu-menu .navbar-header .navbar-brand i {
+  position: absolute;
+  left: 10px;
   font-size: 35px;
 }
 #mu-menu .navbar-header .navbar-brand span {
-  margin-left: 4px;
+  position: absolute;
+  left: 60px;
+  top: 30px;
 }
 #mu-menu .navbar-default {
   background-color: #fff;

@@ -59,17 +59,23 @@ body
 
 .screenSharing{
   position: absolute;
-  height: 120px;
-  width:400px;
-  left:500px;
-  bottom: 20px;
+  height: 160px;
+  width:406px;
+  left:550px;
+  bottom: 30px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.uploadBtn{
+  position: absolute;
+  top: 100px;
+  left: 10px;
 }
 
 .screenlink {
   position: absolute;
   top: 60px;
-  left: 5px;
+  left: 0px;
 }
 
 .heading{
@@ -90,7 +96,7 @@ body
 #AttendanceContainer{
 
     height:  500px;
-    width : 406px;
+    width : 400px;
     position: absolute;
     top : 100px;
     float : right;

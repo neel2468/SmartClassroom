@@ -103,6 +103,8 @@ $(document).ready(function(){
           <ul id="top-menu" class="nav navbar-nav navbar-right main-nav">
           <li>
           <form method="POST" action="<?php $_PHP_SELF ?>">
+            <input type="submit" name="gen" class="genBtn" value="Generate OTP"/>
+            <input type="submit" name="clr" class="clearBtn" value="Clear"/>
             <input type="submit" name="logout" class="genBtn" value="Log Out"/>
          </form>
          <li>                                     
@@ -112,12 +114,6 @@ $(document).ready(function(){
     </nav>
   </section>
 
- <div id="mydiv">
-        <form method="POST" action="<?php $_PHP_SELF ?>">
-            <input type="submit" name="gen" class="genBtn" value="Generate OTP"/>
-            <input type="submit" name="clr" class="clearBtn" value="Clear"/>
-        </form> 
-</div>
 
 
 
@@ -297,17 +293,17 @@ $(document).on('click','.send_chat',function(){
         </div>
 </div>
 
-<!--<div class='screenSharing'>
+<div class='screenSharing'>
         <div class='heading'>
               Screen Sharing
         </div>
         <div class="content">
            <form method='POST' action=" ">
                 <input type="text" name="screensharinglink" class="form-control screenlink" />
-                <input type="submit" name="upload" value="upload" class="btn btn-primary" />
+                <input type="submit" name="send" value="send" class="btn btn-primary uploadBtn" />
             </form>
         </div>
-</div> -->
+</div>
 
 <div id='AttendanceContainer'>
     <div id='TableWrapper'>
@@ -429,8 +425,16 @@ if(isset($_POST['upload']))
 	$uploadpath = $upload_dir.basename($file_name);
 	move_uploaded_file($file_tmp,$uploadpath);
 	echo "<script>alert('file uploaded successfully')</script>";
-  echo "File upload path: - " .$uploadpath."</br>";
-  $query = "INSERT INTO materialdownload(UserName,FilePath) VALUES('$name', '$uploadpath')";
+  $query = "INSERT INTO materialdownload(UserName,FilePath,division,subjectName,screensharinglink) 
+  VALUES('$name', '$uploadpath','$dv','$sb','null')";
   $result = mysqli_query($connection, $query);
+}
+
+
+if(isset($_POST['send']))
+{
+    $link = $_POST['screensharinglink'];
+    $query = "UPDATE materialdownload SET screensharinglink='$link' WHERE UserName = '$name' ";
+    $result = mysqli_query($connection,$query);
 }
 ?>

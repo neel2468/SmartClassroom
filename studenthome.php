@@ -2,6 +2,7 @@
 <?php
 include('checkstudentsession.php');
 $name=$_SESSION['username1'];
+$division=$_SESSION['division1'];
 ?>
 <html>
 <head>
@@ -137,7 +138,7 @@ Material Download
 <?php
    $connection=mysqli_connect('localhost','Neel','neel@123456','classroom');
 
-   $query1 = "SELECT FilePath FROM materialdownload";
+   $query1 = "SELECT FilePath FROM materialdownload WHERE division='$division'";
    $result1 = mysqli_query($connection,$query1);
    while($row=mysqli_fetch_assoc($result1))
    {
@@ -148,6 +149,25 @@ Material Download
 </div>
 </div>
 
+</div>
+
+<div class="ScreenDisplay">
+<div class="ScreenDisplayHeader">
+   View ScreenPlay
+</div>
+<div class="ScreenDisplayContent">
+<?php
+   $connection=mysqli_connect('localhost','Neel','neel@123456','classroom');
+
+   $query2 = "SELECT screensharinglink FROM materialdownload WHERE division='$division'";
+   $result2 = mysqli_query($connection,$query2);
+   while($row=mysqli_fetch_assoc($result2))
+   {
+     $screensharinglink = $row['screensharinglink'];
+     echo "<a href='".$screensharinglink."' target='_blank' style='position:relative;top:30px;left:15px;font-size:15px;padding:10px'>".$screensharinglink."</a></br>";
+   }
+?>
+</div>
 </div>
 
 

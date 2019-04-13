@@ -130,10 +130,12 @@ if(isset($_POST['slogin']))
     {
     	    $username=$_POST['nm2'];
 			$password=$_POST['pwd2'];
+			$division=$_POST['dv2'];
 
 			// To protect from MySQL injection
 			$username = stripslashes($username);
 			$password = stripslashes($password);
+			$division = stripslashes($division);
 			$username = mysqli_real_escape_string($db, $username);
 			$password = mysqli_real_escape_string($db, $password);
 			// $password = md5($password);
@@ -149,7 +151,9 @@ if(isset($_POST['slogin']))
 
 			if(mysqli_num_rows($result) == 1 && mysqli_num_rows($result1) == 1)
 			{
-				$_SESSION['username1'] = $username; // Initializing Session
+				$_SESSION['username1'] = $username;
+				$_SESSION['division1'] = $division;
+				 // Initializing Session
 				// Redirecting To Other Page
 
 					while($row=mysqli_fetch_assoc($result))
